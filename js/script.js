@@ -18,6 +18,7 @@ addGuestButton.addEventListener("click", function () {
     addToList(guest);
     clearInput();
   }
+  updateGuestCount();
 });
 
 const clearInput = function () {
@@ -28,4 +29,16 @@ const addToList = function (guest) {
   const listItem = document.createElement("li");
   listItem.innerText = guest;
   guestList.append(listItem);
+};
+
+const updateGuestCount = function () {
+  const guests = document.querySelectorAll(".guest-list li");
+  guestCount.innerText = guests.length;
+
+  if (guests.length === 8) {
+    addGuestButton.classList.add("hide");
+    guestInput.classList.add("hide");
+    guestInputLabel.classList.add("hide");
+    guestFull.classList.remove("hide");
+  }
 };
