@@ -10,3 +10,7 @@ const guestList = document.querySelector(".guest-list");
 const guestCount = document.querySelector(".attendance");
 // alert when guest list is full (not yet visible)
 const guestFull = document.querySelector(".alert");
+//appears when guest list is full
+const assignButton = document.querySelector(".assign");
+//list of guests names and assigned dishes
+const assignedItem = document.querySelector(".assigned-items");
