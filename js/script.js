@@ -13,7 +13,7 @@ const guestFull = document.querySelector(".alert");
 //appears when guest list is full
 const assignButton = document.querySelector(".assign");
 //list of guests names and assigned dishes
-const assignedItem = document.querySelector(".assigned-items");
+const assignedItems = document.querySelector(".assigned-items");
 
 addGuestButton.addEventListener("click", function () {
   const guest = guestInput.value;
@@ -61,5 +61,19 @@ const assignItems = function () {
       "cheeses",
       "crispy veg salad",
       "seafoods"
+      "sour dough bread"
     ];
   };
+
+  const allGuests = document.querySelectorAll(".guest-list li");
+
+  for(let guest of allGuests) {
+    
+    let randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
+    let randomPotluckItem = potluckItems[randomPotluckIndex];
+    
+    let listItem = createElement("li");
+    listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
+    assignedItems.append(listItem);
+  }
+
