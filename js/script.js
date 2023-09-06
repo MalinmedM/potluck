@@ -60,10 +60,9 @@ const assignItems = function () {
       "pickles",
       "cheeses",
       "crispy veg salad",
-      "seafoods"
+      "seafoods",
       "sour dough bread"
     ];
-  };
 
   const allGuests = document.querySelectorAll(".guest-list li");
 
@@ -72,8 +71,15 @@ const assignItems = function () {
     let randomPotluckIndex = Math.floor(Math.random() * potluckItems.length);
     let randomPotluckItem = potluckItems[randomPotluckIndex];
     
-    let listItem = createElement("li");
+    let listItem = document.createElement("li");
     listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
     assignedItems.append(listItem);
-  }
 
+    potluckItems.splice(randomPotluckIndex, 1);
+  }
+};
+
+assignButton.addEventListener("click", function(){
+  assignItems();
+    assignButton.disabled = true;
+});
