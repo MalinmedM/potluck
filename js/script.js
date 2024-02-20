@@ -15,6 +15,7 @@ const assignButton = document.querySelector(".assign");
 //list of guests names and assigned dishes
 const assignedItems = document.querySelector(".assigned-items");
 
+//Add an Event Listener & Create an Element
 addGuestButton.addEventListener("click", function () {
   const guest = guestInput.value;
 
@@ -25,16 +26,19 @@ addGuestButton.addEventListener("click", function () {
   updateGuestCount();
 });
 
+//Clear the Input Box
 const clearInput = function () {
   guestInput.value = "";
 };
 
+//Refactor Code
 const addToList = function (guest) {
   const listItem = document.createElement("li");
   listItem.innerText = guest;
   guestList.append(listItem);
 };
 
+//Limit the Guest List
 const updateGuestCount = function () {
   const guests = document.querySelectorAll(".guest-list li");
   guestCount.innerText = guests.length;
@@ -72,14 +76,16 @@ const assignItems = function () {
     let randomPotluckItem = potluckItems[randomPotluckIndex];
     
     let listItem = document.createElement("li");
+    // If you use guest without innerText, you’d grab the actual list element instead of the text.
     listItem.innerText = `${guest.innerText} is bringing ${randomPotluckItem}.`;
     assignedItems.append(listItem);
-
+    //remove assigned items from the list to prevent duplication
     potluckItems.splice(randomPotluckIndex, 1);
   }
 };
 
 assignButton.addEventListener("click", function(){
   assignItems();
+  //disables the button to prevent it from assigning again
     assignButton.disabled = true;
 });
